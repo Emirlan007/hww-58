@@ -1,20 +1,22 @@
 import './App.css';
 import {useState} from "react";
 import Modal from "./components/Modal/Modal.tsx";
+import Alert from "./components/Alert/Alert.tsx";
 
 const App = ( ) => {
     const [showModal, setShowModal] = useState(false);
+    const [showAlert, setShowAlert] = useState(true);
 
-    const onCloseModal = () => setShowModal(false)
+    const onCloseModal = () => setShowModal(false);
 
   return (
       <>
           <button
               type="button"
-              className="btn btn-primary d-block ms-auto me-auto mt-2"
+              className="btn btn-primary d-block ms-auto me-auto mt-2 mb-5"
               onClick={() => setShowModal(true)}
           >
-              Показать
+              Show
           </button>
 
           <Modal
@@ -36,6 +38,21 @@ const App = ( ) => {
                   </button>
               </div>
           </Modal>
+
+          <Alert
+              type={"danger"}
+              onDismiss={() => setShowAlert(false)}
+              show={showAlert}
+          >
+              This is a danger type alert
+          </Alert>
+
+          <Alert
+              type={"success"}
+              show={showAlert}
+          >
+              This is a success type alert
+          </Alert>
       </>
   );
 };
